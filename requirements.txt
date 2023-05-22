@@ -1,0 +1,6 @@
+streamlit
+langchain
+openai
+pinecone-client
+unstructured
+tiktoken
