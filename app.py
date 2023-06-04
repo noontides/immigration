@@ -98,7 +98,7 @@ if query:
     chain = load_qa_chain(llm, chain_type="stuff")
 
     docs = docsearch.similarity_search(query,k=5)
-   
+    
     with st.spinner('Processing your question...'):
         #result = conversation.predict(input=prompt)
         result = chain.run(input_documents=docs, question=prompt)
@@ -119,6 +119,6 @@ if query:
     for idx, index in enumerate(desired_indices):
         if index-1 < len(docs):  # Python uses 0-indexing
             doc = docs[index-1]
-            with st.beta_expander(f"Source {idx+1}", expanded=True):
+            with st.beta_expander(f"Source {idx+1}", expanded=True): 
                 st.markdown(doc.page_content)  # Display each desired search result
                 #st.write("---")
