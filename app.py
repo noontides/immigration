@@ -25,31 +25,31 @@ st.set_page_config(page_title="Immigration Q&A", layout="wide", initial_sidebar_
 
 st.header("Immigration Q&A")
 
-is_dark_mode = st.sidebar.checkbox("Dark Mode", value=False)
-
-if is_dark_mode:
-    custom_css = """
-    <style>
-        .stApp {
-            background-color: #282828;
-            color: #FFF;
-        }
-        .stButton > button, .stTextInput > div > div > input {
-            color: #000;
-            background-color: #FFF;
-        }
-    </style>
-    """
-else:
-    custom_css = """
-    <style>
-        .stApp {
-            background-color: #FFFFE6;
-            color: #000;
-        }
-    </style>
-    """
-
+custom_css = """
+<style>
+    #MainMenu {visibility: hidden;}
+    #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 0rem;}
+    footer {visibility: hidden;}
+    header {
+        visibility: hidden;
+        overflow: hidden;
+    }
+    .stApp {
+        background-color: #FFFFE6;
+        color: #000;
+    }
+    .stApp h1 a, .stApp h2 a, .stApp h3 a, .stApp h4 a, .stApp h5 a, .stApp h6 a,
+    .stApp h1 svg, .stApp h2 svg, .stApp h3 svg, .stApp h4 svg, .stApp h5 svg, .stApp h6 svg {
+        display: none;
+    }
+    .stApp .st-expander {
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+"""
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # Display the text
@@ -106,8 +106,12 @@ if query:
     # Add the AI's response to the conversation history
     st.session_state.conversation.add_message('AI', result)
 
+    #st.header("Prompt")
+    #st.write(prompt)  # Display the prompt value
+
     st.header("Answer")
     st.write(result)  # Display the AI-generated answer
+
 
     # Display search results
     st.subheader("Sources")
